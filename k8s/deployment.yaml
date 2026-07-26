@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: production-devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: production-devops
+  template:
+    metadata:
+      labels:
+        app: production-devops
+    spec:
+      containers:
+      - name: production-devops
+        image: 851725556802.dkr.ecr.ap-south-1.amazonaws.com/production-devops:v1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
